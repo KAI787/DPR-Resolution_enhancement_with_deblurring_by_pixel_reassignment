@@ -29,11 +29,13 @@ def process_image(data_folder, file_name, file_type, psf, options, output_dir=No
     """
     print(f"Starting DPR demo.")
 
+    input_path = os.path.abspath(os.path.join(data_folder, f'{file_name}.{file_type}'))
+
     # Load the image stack to determine the number of frames
     try:
         image_stack = load_image_stack(data_folder, file_name, file_type)
-        print(f"Loaded input image stack from \"{data_folder}/{file_name}.{file_type}\":"
-              f" {image_stack.shape} - dimensions(height, width, frames)")
+        print(f"Loaded input image stack: {image_stack.shape} - dimensions(height, width, frames)")
+        print(f"Input image: \"{input_path}\"")
     except Exception as e:
         logging.error(f"Error loading images: {e}")
         return
@@ -42,6 +44,7 @@ def process_image(data_folder, file_name, file_type, psf, options, output_dir=No
     save_folder = output_dir if output_dir else os.path.join(data_folder, 'DPR_results')
     os.makedirs(save_folder, exist_ok=True)
     result_file_type = output_format.lstrip('.') if output_format else file_type
+    output_path = os.path.abspath(os.path.join(save_folder, f'{file_name}_result.{result_file_type}'))
 
     # Run the DPR algorithm
     try:
@@ -53,7 +56,8 @@ def process_image(data_folder, file_name, file_type, psf, options, output_dir=No
     # Save the DPR-enhanced image
     try:
         save_image(dpr_image, save_folder, f'{file_name}_result', result_file_type)
-        print(f"Results saved to disk: \"{save_folder}/{file_name}_result.{result_file_type}\"")
+        print(f"Output image: \"{output_path}\"")
+        print("Done. Check the input and output images at the paths shown above.")
     except Exception as e:
         logging.error(f"Error saving results: {e}")
 
