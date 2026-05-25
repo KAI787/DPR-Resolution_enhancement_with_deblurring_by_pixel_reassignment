@@ -8,7 +8,7 @@ from PIL import Image
 
 def process_image(data_folder, file_name, file_type, psf, options):
     """
-    Process and enhance a stack of images using the DPR (Deconvolution and Pixel Restoration) algorithm.
+    Process and enhance a stack of images using the Deblurring by Pixel Reassignment (DPR) algorithm.
 
     Parameters:
     - data_folder (str): Directory path where the input image files are located and where results will be saved.
