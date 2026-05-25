@@ -94,9 +94,15 @@ Execute the DPR processing demo script:
 python dpr_gpu_demo.py
 ```
 
+Run the same demo non-interactively:
+```bash
+python dpr_gpu_demo.py --input test_images/test_image.tif --output-dir test_images/DPR_results --output-format tif --psf 4 --gain 2 --background 10 --temporal mean
+```
+
 ### Provide Input Parameters:
 - **File Name with Type**: Prompted during execution (e.g., `test_image.tif`). Press Enter for default.
 - **Use Default Parameters**: Recommended for demo purposes (`psf=4, gain=2, background=10, temporal='mean'`). Press Enter to accept defaults or manually input custom values.
+- **Command-line Parameters**: Use `--input`, `--output-dir`, `--output-format`, `--psf`, `--gain`, `--background`, and `--temporal` to run without prompts.
 
 ### Viewing Results:
 - Processed images are saved in the `DPR_results` directory inside `test_images`.
