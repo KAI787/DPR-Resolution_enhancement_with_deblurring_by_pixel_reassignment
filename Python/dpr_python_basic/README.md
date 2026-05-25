@@ -79,11 +79,18 @@ Before getting started, ensure you have the following requirements:
     ```bash
     python3 dpr_demo.py
     ```
+
+    Run the same demo non-interactively with the standard CPU DPR path:
+
+    ```bash
+    python3 dpr_demo.py --input test_images/test_image.tif --output-dir test_images/DPR_results --output-format tif --psf 4 --gain 2 --background 10 --temporal mean
+    ```
 1. Provide the requested information:
 
     - File Name with Type: You will be prompted to enter the image file name with its type (e.g., test_image.tif). Press Enter to use the default value.
     - Use Default Parameters: You will be asked if you want to use the default DPR parameters. Press Enter to use the default values for psf, gain, background, and temporal.
     - Custom Parameters: If you choose not to use the default parameters, you will need to provide custom values for each parameter as prompted.
+    - Command-line Parameters: Use `--input`, `--output-dir`, `--output-format`, `--psf`, `--gain`, `--background`, and `--temporal` to run without prompts. The command-line mode does not run the optional ML-based denoising path.
 
     For a demo, please use the default variables.
 1. Check the Image process result
